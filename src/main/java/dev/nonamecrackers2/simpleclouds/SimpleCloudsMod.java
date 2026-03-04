@@ -4,6 +4,7 @@ import org.apache.maven.artifact.versioning.ArtifactVersion;
 
 import dev.nonamecrackers2.simpleclouds.client.config.SimpleCloudsClientConfigListeners;
 import dev.nonamecrackers2.simpleclouds.client.dh.SimpleCloudsDhCompatHandler;
+import dev.nonamecrackers2.simpleclouds.client.voxy.event.SimpleCloudsVoxyForgeEvents;
 import dev.nonamecrackers2.simpleclouds.client.event.SimpleCloudsClientEvents;
 import dev.nonamecrackers2.simpleclouds.client.keybind.SimpleCloudsKeybinds;
 import dev.nonamecrackers2.simpleclouds.client.renderer.WorldEffects;
@@ -36,9 +37,11 @@ import net.minecraftforge.network.NetworkConstants;
 public class SimpleCloudsMod
 {
 	public static final String MODID = "simpleclouds";
+	private static final String VOXY_MODID = "voxy";
 	private static final String DH_MODID = "distanthorizons";
 	private static ArtifactVersion version;
 	private static boolean dhLoaded;
+	private static boolean voxyLoaded;
 	
 	public SimpleCloudsMod()
 	{
@@ -74,6 +77,7 @@ public class SimpleCloudsMod
 		forgeBus.register(SimpleCloudsEvents.class);
 		SimpleCloudsConfigListeners.registerListener();
 		dhLoaded = ModList.get().isLoaded(DH_MODID);
+		voxyLoaded = ModList.get().isLoaded(VOXY_MODID);
 	}
 	
 	private void clientInit(FMLClientSetupEvent event)
@@ -92,6 +96,11 @@ public class SimpleCloudsMod
 				SimpleCloudsDhCompatHandler.initialize();
 			});
 		}
+
+		if (ModList.get().isLoaded(VOXY_MODID))
+		{
+			MinecraftForge.EVENT_BUS.register(SimpleCloudsVoxyForgeEvents.class);
+		}
 	}
 	
 	public static ResourceLocation id(String path)
@@ -107,5 +116,10 @@ public class SimpleCloudsMod
 	public static boolean dhLoaded()
 	{
 		return dhLoaded;
+	}
+
+	public static boolean voxyLoaded()
+	{
+		return voxyLoaded;
 	}
 }

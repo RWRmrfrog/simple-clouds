@@ -6,6 +6,9 @@
 [![CurseForge Downloads](https://img.shields.io/curseforge/dt/1121215?style=flat-square&logo=curseforge&label=CurseForge&color=orange)](https://www.curseforge.com/minecraft/mc-mods/simple-clouds)
 ![Modrinth Version](https://img.shields.io/modrinth/v/simple-clouds?style=flat-square&label=Version&color=blue)
 
+# Voxy Support Fork
+Makes it so voxy terrain renders in front of distant clouds!
+
 # About
 
 Simple Clouds is a cloud rendering overhaul mod for Minecraft: Java Edition, adding new cloud types, breathtaking visuals, and localized weather. It attempts to mimic real-life weather and cloud formations in a stylized, ambient, and aesthetic way that is meant to build on to the vanilla Minecraft experience.
